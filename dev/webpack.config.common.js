@@ -30,7 +30,7 @@ module.exports = {
       store: path.resolve(__dirname, '../src/store')
     },
     modules: [path.resolve(__dirname, '../src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss']
   },
   module: {
     rules: [
@@ -53,6 +53,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
+          'css-modules-typescript-loader',
           {
             loader: 'style-loader',
               options: {
@@ -78,7 +79,17 @@ module.exports = {
       },
       {
         test: /\.(css)$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              namedExport: true,
+              camelCase: true
+            }
+          },
+          'css-loader'],
       },
       {
         test: /\.(jpg|png)$/,
