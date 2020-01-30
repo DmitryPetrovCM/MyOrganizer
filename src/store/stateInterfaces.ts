@@ -2,21 +2,21 @@ export interface Desktop {
   type: string
 }
 
-interface Menu {
+export interface Menu {
   size: number,
   minSize: number,
   metric: 'px' | '%'
 }
 
-interface TopMenu extends Menu {
+export interface TopMenu extends Menu {
   tools: []
 }
 
-interface LeftMenu extends Menu {
+export interface LeftMenu extends Menu {
   desktops: Desktop[]
 }
 
-interface Workspace extends Desktop {
+export interface Workspace extends Desktop {
   index: number
 }
 

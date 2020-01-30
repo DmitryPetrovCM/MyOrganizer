@@ -11,7 +11,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react",
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "src": ["src"],
+      "store": ["src/store"],
+      "components": ["src/components"],
+      "containers": ["src/containers"]
+    }
   },
   "include": [
     "src"

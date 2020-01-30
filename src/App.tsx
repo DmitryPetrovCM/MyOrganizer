@@ -5,12 +5,14 @@ import {
   Route,
 } from 'react-router-dom';
 
+import TopMenu from 'containers/Menu/TopMenu';
+
 import './App.scss';
 
 const App = () => {
   return (
     <div id="app">
-      AAA
+      <TopMenu />
     </div>
   );
 };

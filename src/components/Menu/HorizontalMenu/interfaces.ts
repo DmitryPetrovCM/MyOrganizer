@@ -1,8 +1,10 @@
-import { Component } from 'react';
+import { Component, ReactNode } from 'react';
 
-export interface Props {
-  children: Component,
+export interface Props extends Component {
   height: number,
   metric: 'px' | '%',
-  className?: string
+  className?: string,
+  children?: ReactNode,
+  tools: [],
+  setHeight: (value:number) => void
 }

@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import classNames from 'classnames';
 import { Props } from './interfaces';
 
 import styles from './index.scss';
 
-const HorizontalMenu = (props: Props) : any => {
+const HorizontalMenu: React.FC<Props> = (props: Props) => {
   const { height, metric, className, children } = props;
 
   return (
-      <div className={classNames(styles.horizontalMenu, className)} style={{ height: `${height}${metric}`}}>
-        {children}
+      <div className={classNames('a', className)} style={{ height: `${height}${metric}`}}>
+        {children ? children : null}
       </div>
   )
 };
@@ -17,3 +17,5 @@ const HorizontalMenu = (props: Props) : any => {
 HorizontalMenu.defaultProps = {
   metric: 'px'
 };
+
+export default HorizontalMenu;
