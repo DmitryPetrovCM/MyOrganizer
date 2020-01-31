@@ -8,7 +8,7 @@ const HorizontalMenu: React.FC<Props> = (props: Props) => {
   const { height, metric, className, children } = props;
 
   return (
-      <div className={classNames('a', className)} style={{ height: `${height}${metric}`}}>
+      <div className={classNames(styles.horizontalMenu, className)} style={{ height: `${height}${metric}`}}>
         {children ? children : null}
       </div>
   )

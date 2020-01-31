@@ -53,13 +53,34 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'css-modules-typescript-loader',
+          // {
+          //   loader: "@teamsupercell/typings-for-css-modules-loader",
+          //   options: {
+          //     // pass all the options for `css-loader` to `css-loader`, eg.
+          //     // namedExport: true
+          //   }
+          // },
+          // {
+          //   loader: 'typings-for-css-modules-loader',
+          //   options: {
+          //     modules: true,
+          //     namedExport: true,
+          //     camelCase: true
+          //   }
+          // },
           {
             loader: 'style-loader',
               options: {
                 injectType: 'styleTag'
             }
           },
+          // {
+          //   loader: "@teamsupercell/typings-for-css-modules-loader",
+          //   options: {
+          //     // pass all the options for `css-loader` to `css-loader`, eg.
+          //     // namedExport: true
+          //   }
+          // },
           {
             loader: 'css-loader',
             options: {
@@ -80,7 +101,6 @@ module.exports = {
       {
         test: /\.(css)$/,
         use: [
-          'style-loader',
           // {
           //   loader: 'typings-for-css-modules-loader',
           //   options: {
@@ -89,7 +109,18 @@ module.exports = {
           //     camelCase: true
           //   }
           // },
-          'css-loader'],
+          'style-loader',
+          // {
+          //   loader: "@teamsupercell/typings-for-css-modules-loader",
+          //   options: {
+          //     // pass all the options for `css-loader` to `css-loader`, eg.
+          //     // namedExport: true
+          //   }
+          // },
+          {
+            loader: 'css-loader'
+          }
+        ],
       },
       {
         test: /\.(jpg|png)$/,

@@ -7,11 +7,11 @@ import {
 
 import TopMenu from 'containers/Menu/TopMenu';
 
-import './App.scss';
+import styles from  './App.scss';
 
 const App = () => {
   return (
-    <div id="app">
+    <div id="app" className={styles.app}>
       <TopMenu />
     </div>
   );
