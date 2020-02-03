@@ -1,4 +1,4 @@
 export interface TopMenuSize {
-  type: string,
-  size: number
+  type: string;
+  size: number;
 }

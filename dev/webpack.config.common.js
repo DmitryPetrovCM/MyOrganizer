@@ -27,7 +27,9 @@ module.exports = {
       assets: path.resolve(__dirname, '../src/assets'),
       constants: path.resolve(__dirname, '../src/constants'),
       styles: path.resolve(__dirname, '../src/styles'),
-      store: path.resolve(__dirname, '../src/store')
+      store: path.resolve(__dirname, '../src/store'),
+      hooks: path.resolve(__dirname, '../src/hooks'),
+      selectors: path.resolve(__dirname, '..src/store/selectors')
     },
     modules: [path.resolve(__dirname, '../src'), 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss']

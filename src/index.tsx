@@ -9,7 +9,7 @@ interface ExtendedWindow extends Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
   __REDUX_DEVTOOLS_EXTENSION__?: typeof compose;
 }
-declare var window: ExtendedWindow;
+declare let window: ExtendedWindow;
 
 const store = createStore(
   rootReducer,

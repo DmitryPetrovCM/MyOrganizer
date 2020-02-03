@@ -1,10 +1,10 @@
-import React, {FunctionComponent} from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { Props } from './interfaces';
 
 import styles from './index.scss';
 
-const HorizontalMenu: React.FC<Props> = (props: Props) => {
+const HorizontalMenu: any = (props: Props) => {
   const { height, metric, className, children } = props;
 
   return (

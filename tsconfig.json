@@ -17,7 +17,9 @@
       "src": ["src"],
       "store": ["src/store"],
       "components": ["src/components"],
-      "containers": ["src/containers"]
+      "containers": ["src/containers"],
+      "hooks": ["src/hooks"],
+      "selectors": ["store/selectors"]
     }
   },
   "include": [

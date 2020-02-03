@@ -1,29 +1,31 @@
 export interface Desktop {
-  type: string
+  type: string;
 }
 
+export type Metric =  'px' | '%';
+
 export interface Menu {
-  size: number,
-  minSize: number,
-  metric: 'px' | '%'
+  size: number;
+  minSize: number;
+  metric: Metric;
 }
 
 export interface TopMenu extends Menu {
-  tools: []
+  tools: [];
 }
 
 export interface LeftMenu extends Menu {
-  desktops: Desktop[]
+  desktops: Desktop[];
 }
 
 export interface Workspace extends Desktop {
-  index: number
+  index: number;
 }
 
 export interface InitialState {
-  topMenu: TopMenu,
-  leftSideMenu: LeftMenu,
-  bottomMenu: Menu,
-  workspace: Workspace | {},
-  currentDesktopIndex: number
+  topMenu: TopMenu;
+  leftSideMenu: LeftMenu;
+  bottomMenu: Menu;
+  workspace: Workspace | {};
+  currentDesktopIndex: number;
 }
