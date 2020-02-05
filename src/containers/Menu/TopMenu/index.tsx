@@ -16,7 +16,7 @@ const TopMenuContainer = () => {
       height={height}
       metric={metric}
       tools={tools}
-      setHeight={(value: number) => dispatch(setTopMenuSize(value))}
+      setHeight={(value: number): any => dispatch(setTopMenuSize(value))}
     />
   );
 };

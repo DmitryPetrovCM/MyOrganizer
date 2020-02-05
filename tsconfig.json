@@ -15,11 +15,12 @@
     "baseUrl": "./",
     "paths": {
       "src": ["src"],
-      "store": ["src/store"],
-      "components": ["src/components"],
-      "containers": ["src/containers"],
-      "hooks": ["src/hooks"],
-      "selectors": ["store/selectors"]
+      "store/*": ["src/store/*"],
+      "components/*": ["src/components/*"],
+      "containers/*": ["src/containers/*"],
+      "hooks/*": ["src/hooks/*"],
+      "selectors/*": ["store/selectors/*"],
+      "utils": ["src/utils"]
     }
   },
   "include": [

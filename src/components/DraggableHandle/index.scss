@@ -1,0 +1,15 @@
+.handle {
+  background-color: #979ba1;
+  cursor: grab;
+ // opacity: 0.3;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+body[data-dragged=true] {
+  .handle {
+    cursor: grabbing;
+  }
+}

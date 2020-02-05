@@ -1,5 +1,12 @@
 .horizontalMenu {
   background-color: gray;
+  position: relative;
+}
+
+.draggableHandle {
+  width: 100%;
+  height: 10px;
+  position: absolute;
 }
 
 .tools {
