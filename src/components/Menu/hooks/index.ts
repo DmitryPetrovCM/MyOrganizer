@@ -2,10 +2,11 @@ import React, {useState, useEffect, useLayoutEffect} from 'react';
 import { DraggableMenuSize } from './interfaces';
 import { toggleAttribute } from 'utils';
 
+let body: Element | null = null;
+
 export const useDraggableMenuSize = (menuSize: number, setMenuSize: (value: number) => any): DraggableMenuSize => {
   const [size, setSize] = useState(menuSize);
   const [isDrag, setIsDrag] = useState(false);
-  const [body, setBody] = useState<Element | null>(null);
 
   useEffect(() => {
     if (body) {
@@ -14,7 +15,7 @@ export const useDraggableMenuSize = (menuSize: number, setMenuSize: (value: numb
   }, [isDrag]);
 
   useEffect(() => {
-    setBody(document.querySelector('body'));
+    body = document.querySelector('body');
   }, [])
 
   return {
