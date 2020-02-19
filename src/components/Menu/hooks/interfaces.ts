@@ -1,5 +1,11 @@
+import React from 'react';
+
+interface Position {
+  x: number;
+  y: number;
+}
+
 export interface DraggableMenuSize {
   size: number;
-  onDrag: (arg: any, shifts?: any) => any;
-  onStop: (arg: any, shifts: any) => any;
+  DraggableHandle: React.ElementType;
 }

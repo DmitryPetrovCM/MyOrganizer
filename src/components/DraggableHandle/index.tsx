@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Draggable from 'react-draggable';
 import { Props } from './interfaces';
 import classNames from 'classnames';
@@ -11,17 +11,45 @@ const DEFAULT_POSITION = {
 };
 
 const DraggableHandle = (props: Props): any => {
-  const { children, axis, handle, defaultPosition, className, bounds, onDrag, onStart, onStop } = props;
+  const { children, axis, handle, forcedPosition, defaultPosition, className, bounds, onDrag: externalOnDrag, onStart, onStop } = props;
+  const [position, setPosition] = useState({
+    ...DEFAULT_POSITION,
+    ...defaultPosition
+  });
+
+  useEffect(() => {
+    if (forcedPosition) {
+      setPosition((prevPosition) => ({
+        ...prevPosition,
+        [axis]: forcedPosition[axis]
+      }));
+    }
+  }, [forcedPosition]);
+
+  const onDrag = (e: any, shifts: any) => {
+    setPosition((prevPosition => {
+      if (prevPosition) {
+        return {
+          ...prevPosition,
+          [axis]: shifts[axis]
+        }
+      }
+
+      return {
+        ...DEFAULT_POSITION,
+        [axis]: shifts[axis]
+      }
+    }));
+
+    externalOnDrag(e, shifts);
+  };
 
   return (
     <Draggable
       axis={axis}
       handle={handle}
       bounds={bounds}
-      defaultPosition={{
-        ...DEFAULT_POSITION,
-        ...defaultPosition
-      }}
+      position={position}
       onStart={onStart}
       onDrag={onDrag}
       onStop={onStop}
@@ -38,6 +66,7 @@ DraggableHandle.defaultProps = {
   axis: 'both',
   bounds: 'body',
   handle: `.${styles.handle}`,
+  position: {},
   defaultPosition: {
     x: 0,
     y: 0
@@ -46,6 +75,6 @@ DraggableHandle.defaultProps = {
   onStart: () => {},
   onDrag: () => {},
   onStop: () => {}
-}
+};
 
 export default DraggableHandle;

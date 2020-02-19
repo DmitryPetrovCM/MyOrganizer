@@ -1,18 +1,9 @@
-html {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-
-  &[data-dragged=true] {
-    cursor: grabbing !important;
-  }
+body[data-dragged=true] {
+  cursor: grabbing !important;
 }
 
 .app {
+  height: 100%;
+  width: 100%;
   margin: 0;
 }

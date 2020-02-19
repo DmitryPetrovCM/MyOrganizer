@@ -1,0 +1,11 @@
+$menuSize: 10px;
+
+.horizontal {
+  width: 100%;
+  height: $menuSize;
+}
+
+.vertical {
+  height: 100%;
+  width: $menuSize;
+}

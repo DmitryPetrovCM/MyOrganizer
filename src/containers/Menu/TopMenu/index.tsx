@@ -1,22 +1,37 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTopMenuSize } from 'store/app/topMenu/actionCreators';
-import { getTopMenuHeight, getTopMenuMetric, getTopMenuTools } from 'store/selectors';
+import {
+  getTopMenuHeight,
+  getTopMenuMetric,
+  getTopMenuTools,
+  getTopMenuMaxHeight,
+  getTopMenuType,
+  getTopMenuExpandDirection,
+} from 'store/selectors';
 
-import HorizontalMenu from 'components/Menu/HorizontalMenu';
+import Menu from 'components/Menu/Menu';
+import styles from './index.scss';
 
 const TopMenuContainer = () => {
   const dispatch = useDispatch();
   const height = useSelector(getTopMenuHeight);
   const metric = useSelector(getTopMenuMetric);
   const tools = useSelector(getTopMenuTools);
+  const maxHeight = useSelector(getTopMenuMaxHeight);
+  const type = useSelector(getTopMenuType);
+  const expandDirection = useSelector(getTopMenuExpandDirection);
 
   return (
-    <HorizontalMenu
-      height={height}
+    <Menu
+      size={height}
+      maxSize={maxHeight}
       metric={metric}
+      type={type}
+      expandDirection={expandDirection}
       tools={tools}
-      setHeight={(value: number): any => dispatch(setTopMenuSize(value))}
+      className={styles.topMenu}
+      setSize={(value: number): any => dispatch(setTopMenuSize(value))}
     />
   );
 };

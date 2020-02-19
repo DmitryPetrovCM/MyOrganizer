@@ -13,8 +13,9 @@ interface Position {
 export interface Props {
   className: string;
   defaultPosition?: Position;
+  forcedPosition?: Position | null;
   bounds: Bounds;
-  axis: 'x' | 'y' | 'both' | 'none' | undefined;
+  axis: 'x' | 'y';
   handle: string;
   onStart: (e: any, shifts: any) => any;
   onDrag: (e: any, shifts?: any) => any;
