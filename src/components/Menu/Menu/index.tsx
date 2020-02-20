@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import classNames from 'classnames';
 import {Props} from './interfaces';
 
@@ -23,9 +23,13 @@ const RELATIVE_PARAMS = {
 const Menu = (props: Props): any => {
   const {size, maxSize, metric, className, draggable, type, expandDirection, children, setSize} = props;
   const { dynamicProperty, axis, orientationClassName } = RELATIVE_PARAMS[type];
+  const menuElem = useRef(null);
 
   return (
-    <div className={classNames(styles.menu, orientationClassName, className)} style={{[dynamicProperty]: `${size}${metric}`}}>
+    <div
+      ref={menuElem}
+      className={classNames(styles.menu, orientationClassName, className)}
+      style={{[dynamicProperty]: `${size}${metric}`}}>
       {draggable
         ? (
           <MenuDragHandler
@@ -35,6 +39,8 @@ const Menu = (props: Props): any => {
             maxSize={maxSize}
             type={type}
             expandDirection={expandDirection}
+            controlledRef={menuElem}
+            controlledProperty={dynamicProperty}
             setMenuSize={setSize}
           />
         )

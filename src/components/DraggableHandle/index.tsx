@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
+import { useCssAnimation } from 'hooks/useCssAnimation';
 import Draggable from 'react-draggable';
 import { Props } from './interfaces';
 import classNames from 'classnames';
@@ -11,11 +12,15 @@ const DEFAULT_POSITION = {
 };
 
 const DraggableHandle = (props: Props): any => {
-  const { children, axis, handle, forcedPosition, defaultPosition, className, bounds, onDrag: externalOnDrag, onStart, onStop } = props;
+  const { children, axis, handle, forcedPosition, defaultPosition, className, bounds, controlledRef, controlledProperty,
+    onDrag: externalOnDrag, onStart, onStop } = props;
   const [position, setPosition] = useState({
     ...DEFAULT_POSITION,
     ...defaultPosition
   });
+  const draggableElem = useRef(null);
+  const animate = useCssAnimation(draggableElem, 'transform', 'ease', 1000);
+  const animateControlledElem = useCssAnimation(controlledRef, controlledProperty, 'ease', 1000);
 
   useEffect(() => {
     if (forcedPosition) {
@@ -23,6 +28,9 @@ const DraggableHandle = (props: Props): any => {
         ...prevPosition,
         [axis]: forcedPosition[axis]
       }));
+
+      animate();
+      animateControlledElem();
     }
   }, [forcedPosition]);
 
@@ -54,7 +62,7 @@ const DraggableHandle = (props: Props): any => {
       onDrag={onDrag}
       onStop={onStop}
     >
-      <div className={classNames(styles.handle, className)}>
+      <div ref={draggableElem} className={classNames(styles.handle, className)}>
         {children || null}
       </div>
     </Draggable>
@@ -63,6 +71,7 @@ const DraggableHandle = (props: Props): any => {
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 DraggableHandle.defaultProps = {
+  animatedReset: true,
   axis: 'both',
   bounds: 'body',
   handle: `.${styles.handle}`,

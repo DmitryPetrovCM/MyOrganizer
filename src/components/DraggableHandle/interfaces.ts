@@ -1,3 +1,5 @@
+import React from "react";
+
 type Bounds = {
   left: number;
   top: number;
@@ -11,6 +13,9 @@ interface Position {
 }
 
 export interface Props {
+  animatedReset?: boolean;
+  controlledRef: React.RefObject<any>;
+  controlledProperty: string;
   className: string;
   defaultPosition?: Position;
   forcedPosition?: Position | null;

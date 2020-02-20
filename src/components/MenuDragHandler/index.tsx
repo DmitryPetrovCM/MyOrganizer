@@ -10,7 +10,7 @@ import {MENU_TYPES} from 'constants/menu';
 let body: Element | null = null;
 
 const MenuDragHandler = (props: Props): any => {
-  const { menuSize, maxSize, axis, className, type, expandDirection, setMenuSize, onDragStop } = props;
+  const { menuSize, maxSize, axis, className, type, expandDirection, controlledRef, controlledProperty, setMenuSize, onDragStop } = props;
   const [isDrag, setIsDrag] = useState(false);
   const [ownClassNames, setOwnClassNames] = useState();
   const [forcedPosition, forcePosition] = useState<null | { x: number; y: number }>(null);
@@ -62,6 +62,8 @@ const MenuDragHandler = (props: Props): any => {
   return (
     <DraggableHandle
       className={ownClassNames}
+      controlledRef={controlledRef}
+      controlledProperty={controlledProperty}
       axis={axis}
       defaultPosition={{[axis]: menuSize}}
       forcedPosition={forcedPosition}
