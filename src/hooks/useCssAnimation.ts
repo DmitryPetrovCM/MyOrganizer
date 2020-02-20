@@ -10,7 +10,7 @@ export const useCssAnimation = (ref: any | any[], animatedProperty: string, timi
       const animationEndHandler = (e: any) => {
         elem.style.transition = '';
 
-        elem.removeEventListener(animationEndHandler);
+        elem.removeEventListener('transitionend', animationEndHandler);
       };
 
       elem.style.transition = `${animatedProperty} ${duration}ms ${timingFunction} ${delay}ms`;
